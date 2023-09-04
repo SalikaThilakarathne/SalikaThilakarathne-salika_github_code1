@@ -42,8 +42,33 @@
         section {
             padding: 20px;
             margin-top: 50px; /* Add space below the fixed navigation */
+            background-repeat: no-repeat; /* Prevent image from repeating */
+            background-size: cover; /* Cover the entire section */
         }
 
+        /* Style for the Home section with background image */
+        #home {
+            background-image: url('your-image.jpg'); /* Replace 'your-image.jpg' with your image path */
+            color: #fff; /* Text color on top of the image */
+            text-align: center;
+            padding: 100px 0; /* Adjust padding to center content vertically */
+        }
+
+        /* Add styles for the content within the Home section */
+        #home h1 {
+            font-size: 36px;
+        }
+
+        #home p {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        /* Style for the active navigation item */
+        .active {
+            font-weight: bold;
+            color: #ff8c00; /* Change color for the active item */
+        }
     </style>
 </head>
 
@@ -62,7 +87,7 @@
     <!-- Home Section -->
     <section id="home">
         <!-- Move the header content here -->
-        <img src="salika_hasaki.jpg" alt="Your Image" width="150">
+        <img src="your-image.jpg" alt="Your Image" width="150">
         <h1>Hello, I'm Salika Thilakarathne</h1>
         <h2>Welcome to my homepage</h2>
         <p>Thank you for visiting my web page. Here, I share my journey as a PhD student and my experiences.</p>
@@ -91,6 +116,29 @@
         <h2>Contact</h2>
         <p>Feel free to reach out to me for collaborations, inquiries, or just to say hello. I'm always open to connecting!</p>
     </section>
+
+    <script>
+        // JavaScript to highlight the active navigation item based on scroll position
+        window.addEventListener('scroll', function () {
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('nav a');
+            let currentSection = '';
+
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop - 50; // Adjust for fixed navigation height
+                if (window.scrollY >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach((navItem) => {
+                navItem.classList.remove('active');
+                if (navItem.getAttribute('href').substring(1) === currentSection) {
+                    navItem.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
